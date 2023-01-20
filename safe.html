@@ -1,0 +1,199 @@
+<html>
+<head>
+  <title>Aaya Calculator</title>
+  <style>
+    body{
+        background-image:url('https://c4.wallpaperflare.com/wallpaper/544/1009/317/simple-simple-background-jailsonsea-ultra-settings-blue-bottoms-hd-wallpaper-preview.jpg');
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .aaya{
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        margin-top: -50px;
+        margin-left: -100px;
+        font-size: 30px;
+    }
+    #image {
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+    margin-left:41% ;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+  </style>
+</head>
+<body>
+    <script>
+        // function to calculate the results
+function calculateResults()
+{
+            // get the input values
+            var startLengthFeet = document.getElementById("startLengthFeet").value;
+            var startLengthInches = document.getElementById("startLengthInches").value;
+            var endLengthFeet = document.getElementById("endLengthFeet").value;
+            var endLengthInches = document.getElementById("endLengthInches").value;
+            var startBreadthFeet = document.getElementById("startBreadthFeet").value;
+            var startBreadthInches = document.getElementById("startBreadthInches").value;
+            var endBreadthFeet = document.getElementById("endBreadthFeet").value;
+            var endBreadthInches = document.getElementById("endBreadthInches").value;
+            var selectNumber = document.getElementById("selectNumber").value;
+            
+            // clear the results table
+            var table = document.getElementById("resultsTable");
+            while (table.rows.length > 1)
+             {
+                table.deleteRow(1);
+             }
+            startLengthInches=0;
+            startBreadthInches=0;
+            endBreadthInches=11;
+            endLengthInches=11;
+            // loop through the length and breadth values
+            for (var lengthFeet = startLengthFeet; lengthFeet <= endLengthFeet; lengthFeet++) {
+              for (var breadthFeet = startBreadthFeet; breadthFeet <= endBreadthFeet; breadthFeet++){
+                for (var lengthInches = startLengthInches; lengthInches <= 11; lengthInches++) {
+                        for (var breadthInches = startBreadthInches; breadthInches <= 11; breadthInches++) {
+                            // calculate the total length and breadth in feet
+                            var length = lengthFeet + (lengthInches / 12);
+                            var breadth = breadthFeet + (breadthInches / 12);
+                            
+                            // calculate the Aya Shesha, Dhana Shesha, Runa Shesha, and Ayush Shesha values
+                            var aya_shesha = (length * breadth * 9) % 8;
+                            var dhana_shesha = (length * breadth * 8) % 12;
+                            var runa_shesha = (length * breadth * 3) % 8;
+                            var ayush_shesha = (length * breadth * 9) % 120;
+                            if(dhana_shesha==0)
+                            {
+                              dhana_shesha=12;
+                            }
+                            if(runa_shesha==0)
+                            {
+                              runa_shesha=8;
+                            }
+                            if(ayush_shesha==0)
+                            {
+                              ayush_shesha=120;
+                            }
+                            var maxi=Number(selectNumber) + 0.2;
+                            var mini=Number(selectNumber) - 0.2;
+                            // check the conditions and add the values to the table
+                            if ((aya_shesha>mini && aya_shesha<maxi) && dhana_shesha > runa_shesha && ayush_shesha > 50) 
+                            {
+                                var newRow = table.insertRow();
+                                console.log(aya_shesha,selectNumber+0.2)
+                                newRow.insertCell().innerHTML = lengthFeet;
+                                newRow.insertCell().innerHTML = lengthInches;
+                                newRow.insertCell().innerHTML = breadthFeet;
+                                newRow.insertCell().innerHTML = breadthInches;
+                                newRow.insertCell().innerHTML = aya_shesha;
+                                newRow.insertCell().innerHTML = dhana_shesha;
+                                newRow.insertCell().innerHTML = runa_shesha;
+                                newRow.insertCell().innerHTML = ayush_shesha;
+    
+    // check the conditions and add the values to the table
+    if (aya_shesha == selectNumber && dhana_shesha > runa_shesha && ayush_shesha > 50)
+     {
+    document.getElementById("resultsTable").appendChild(newRow);
+     }
+    }
+    }
+    }
+    }
+}
+    
+    // display the table
+    document.getElementById("resultsTable").style.display = "block";
+    }
+    
+    </script>
+    <h1 style="margin-left: 25%;">ಶ್ರೀ ಗುರು ಕೊಟ್ಟೂರೇಶ್ವರಾಯ ನಮಃ</h1>
+    <img id="image" src="https://cdn2.sharechat.com/39243b57_1615025110967_sc_1615025128554_keyframe_03_05.jpg">
+    <div class="aaya">
+        
+        <h2>Aaya Calculator</h2>
+        <form action="calculate.php" method="post">
+      
+      <label for="startLengthFeet">Starting Length (Feet):</label>
+      <input type="number" id="startLengthFeet" name="startLengthFeet" min="0" max="200" required>
+      
+      <label for="startLengthInches">Starting Length (Inches):</label>
+      <input type="number" id="startLengthInches" name="startLengthInches" min="0" max="11" >
+      
+      <br>
+      
+      <label for="endLengthFeet">Ending Length (Feet):</label>
+      <input type="number" id="endLengthFeet" name="endLengthFeet" min="0" max="200" required>
+      
+      <label for="endLengthInches">Ending Length (Inches):</label>
+      <input type="number" id="endLengthInches" name="endLengthInches" min="0" max="11" >
+      
+      <br>
+      
+      <label for="startBreadthFeet">Starting Breadth (Feet):</label>
+      <input type="number" id="startBreadthFeet" name="startBreadthFeet" min="0" max="200" required>
+      
+      <label for="startBreadthInches">Starting Breadth (Inches):</label>
+      <input type="number" id="startBreadthInches" name="startBreadthInches" min="0" max="11" >
+      
+      <br>
+      
+      <label for="endBreadthFeet">Ending Breadth (Feet):</label>
+      <input type="number" id="endBreadthFeet" name="endBreadthFeet" min="0" max="200" required>
+      
+      <label for="endBreadthInches">Ending Breadth (Inches):</label>
+      <input type="number" id="endBreadthInches" name="endBreadthInches" min="0" max="11" >
+      
+      <br>
+      
+      <label for="selectNumber">Select a Number (1, 3, 5, 7, 9):</label>
+      <select id="selectNumber" name="selectNumber" required>
+        <option value="1">1 Dwaja aaya</option>
+        <option value="3">3</option>
+        <option value="5">5 Gaja aaya</option>
+        <option value="7">7</option>
+        <option value="9">9</option>
+      </select>
+      <br>
+      <br>
+      <input type="button" value="Calculate" onclick="calculateResults()">
+    </form>
+    <br>
+    <br>
+    <div id="result"></div>
+    <br>
+    <br>
+    <table id="resultsTable" border="1">
+      <tr>
+        <th>Length feet</th>
+        <th>Length inches</th>
+        <th>Breadth feet</th>
+        <th>Breadth inches</th>
+        <th>Aya Shesha</th>
+        <th>Dhana Shesha</th>
+        <th>Runa Shesha</th>
+        <th>Ayush Shesha</th>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
