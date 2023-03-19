@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta name="google-site-verification" content="M6PWP75XbWKnjynUAcB9_bm1RB3BbkFIHamgfGBg7NM" />
+  <title>Aaya Calculator</title>
+  <style>
+    /* Default styles */
+body {
+    font-size: 16px;
+}
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    /* Change the font size for small screens */
+    body {
+        font-size: 14px;
+    }
+}
+    /* Add a hover effect for the button */
+button:hover {
+    /* Change the background color of the button when hovered */
+    background-color: #0077c9;
+    /* Add a transition effect for a smooth transition */
+    transition: background-color 0.3s ease;
+}
+    #startLengthFeet{
+        margin-left: -10px;
+        font-size: 60px;
+        font-weight: bold;
+    }
+    #endLengthFeet{
+        font-size: 60px;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+    #startBreadthFeet{
+        margin-left: -28px;
+        font-size: 60px;
+        font-weight: bold;
+    }
+    #endBreadthFeet{
+        margin-left: -7px;
+        font-size: 60px;
+        font-weight: bold;
+    }
+    input{
+        height: 70px;
+        font-size:40px ;
+        line-height: 50px;
+
+    }
+    
+    html{
+        color: #B8B8B8;
+    }
+    body{
+        background-image:url('https://e0.pxfuel.com/wallpapers/697/158/desktop-wallpaper-lord-shiva-black-and-white-god-black.jpg');
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    h1 {
+    /* Align the text to the center */
+    text-align: center;
+    /* Remove the left margin */
+    margin-left: 0;
+    /* Add top margin */
+    margin-top: 20px;
+}
+
+
+    .aaya{
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        margin-top: -50px;
+        margin-left: -100px;
+        font-size: 50px;
+        line-height: 90px
+    }
+    #image {
+    border-radius: 50%;
+    height: 180px;
+    width: 180px;
+    margin-left:41% ;
+}
+table {
+  font-family: arial, sans-serif;
+  font-size: 25px;
+  border-collapse: collapse;
+  margin-left: -60px;
+  width: 50%;
+}
+#selectNumber{
+    /* Increase the height */
+    height: 60px;
+    font-size: 40px;
+        font-weight: bold;
+}
+select{
+    font-size: 10px;
+    margin-left: 0px;
+}
+
+td, th {
+  border: 1px solid #f7f2f2;
+  text-align: center;
+  font-weight: bold;
+  font-size: 34px;
+  padding: 8px;
+}
+
+#image {
+    /* Center the image horizontally */
+    margin: 20px auto;
+    /* Make the image a block level element */
+    display: block;
+    /* Add width and height */
+    width: 180px;
+    height: 180px;
+}
+label{
+    
+    font-weight: bold;
+    
+}
+
+  </style>
+</head>
+
+<body>
+    
+    <h1 >ಶ್ರೀ ಗುರು ಕೊಟ್ಟೂರೇಶಾಯ ನಮಃ</h1>
+    <img id="image" src="https://cdn2.sharechat.com/39243b57_1615025110967_sc_1615025128554_keyframe_03_05.jpg">
+    <div class="aaya">
+        
+        <h3 style="text-align:center; margin-left: -50px; font-size:55px;">ಗೃಹ ಆಯ ನಿರ್ಣಯ ದರ್ಪಣ</h3>
+        <form action="calculate.php" method="post">
+      
+      <label for="startLengthFeet">Starting Length (Feet):</label>
+      <input type="number" id="startLengthFeet" name="startLengthFeet" min="0" max="999" required>
+      
+      
+      <br>
+      
+      <label for="endLengthFeet">Ending Length (Feet):</label>
+      <input type="number" id="endLengthFeet" name="endLengthFeet" min="0" max="999" required>
+      
+      
+      
+      <br>
+      
+      <label for="startBreadthFeet">Starting Breadth (Feet):</label>
+      <input type="number" id="startBreadthFeet" name="startBreadthFeet" min="0" max="999" required>
+      
+      
+      <br>
+      
+      <label for="endBreadthFeet">Ending Breadth (Feet):</label>
+      <input type="number" id="endBreadthFeet" name="endBreadthFeet" min="0" max="999" required>
+    
+      
+      <br>
+      
+      <label for="selectNumber">ಆಯ ಆಯ್ಕೆ ಮಾಡಿ (1, 3, 5, 7):</label>
+      <select id="selectNumber" name="selectNumber" required>
+        <option value="1"> ಧ್ವಜಾಯ </option>
+        <option value="3"> ಸಿಂಹಾಯ </option>
+        <option value="5"> ಋಷಬಾಯ </option>
+        <option value="7"> ಗಾಜಾಯ </option>
+      </select>
+      <br>
+      <br>
+      <div class="cal" >
+        <input type="button" value=" ಮುಂದುವರೆಸಿರಿ "  onclick="validateForm(),calculateResults()" style="font-size:35px; text-align: left; font-weight:bold">
+
+      </div>
+    </form>
+    <br>
+    <br>
+    <div id="result"></div>
+    <br>
+    <br>
+    <table id="resultsTable" border="3">
+      <tr>
+        <th>ಉದ್ದ (ಅಡಿ)</th>
+        <th>ಉದ್ದ (ಇಂಚು)</th>
+        <th>ಅಗಲ (ಅಡಿ)</th>
+        <th>ಅಗಲ (ಇಂಚು)</th>
+        <th>ಆಯ ಶೇಷ</th>
+        <th>ಧನ ಶೇಷ</th>
+        <th>ಋಣ ಶೇಷ</th>
+        <th>ಆಯುಷ್ಯ ಶೇಷ</th>
+      </tr>
+    </table>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
